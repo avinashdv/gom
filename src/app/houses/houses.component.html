@@ -1,0 +1,291 @@
+<nav class="nav fixed-top heading">
+  <div class="container d-flex justify-content-center">
+    
+    <a [routerLink]="['/main']">
+      <img src="assets/images/gottitle.jpg" class="image-title" alt="">
+    </a>
+  </div>
+</nav>
+
+<ng-container *ngIf="currentHouse">
+    <div class="d-flex justify-content-center ">
+      <div class="body">
+        <div class="row">
+          <div class="col-3 d-none d-md-block">
+          </div>
+          <div class="col-6 d-none d-md-block">
+            <div class="card border border-0">
+              <img src="assets/images/gotcastle.jpg" class="card-img-top img-fluid d-flex justify-content-center" alt="Card image cap">
+            </div>
+          </div>
+          <div class="col-3 d-none d-md-block">
+          </div>
+        </div>
+
+        <div class="container pt-3">
+          <!-- Character Name -->
+          <ng-container *ngIf='currentHouse.name === ""'>
+            <h1 class="d-flex justify-content-center"> <b>Name</b>:
+              N/A
+            </h1>
+          </ng-container>
+
+          <ng-container *ngIf='currentHouse.name !== "" && currentHouse.name !== null && currentHouse.name !== undefined'>
+            <h1 class="d-flex justify-content-center text-center">{{ currentHouse.name }}</h1>
+          </ng-container>
+          
+          
+          <!-- Region -->
+          <ng-container *ngIf='currentHouse.region === ""'>
+            <p class="d-flex justify-content-center">Region:
+              <b>N/A</b>
+            </p>
+          </ng-container>
+
+          <ng-container *ngIf='currentHouse.region !== "" && currentHouse.region !== null && currentHouse.region !== undefined'>
+            <p class="d-flex  justify-content-center mb-0"> <b>Region</b> :</p>
+            <p class="d-flex justify-content-center text-center">{{ currentHouse.region }}</p>
+          </ng-container>
+          
+          <!-- Coat Of Arms -->
+
+          <ng-container *ngIf='currentHouse.coatOfArms !== "" && currentHouse.coatOfArms !== null && currentHouse.coatOfArms !== undefined'>
+            <p class="d-flex justify-content-center mb-0"> <b>Coat Of Arms</b>:</p>
+            <div class="d-flex justify-content-center">
+              <p class="text-center">{{ currentHouse.coatOfArms }}</p>
+            </div>
+          </ng-container>
+          
+          <!-- Words -->
+          <ng-container *ngIf='currentHouse.words !== "" && currentHouse.words !== null && currentHouse.words !== undefined'>
+            <p class="d-flex justify-content-center mb-0"> <b>Words</b>: </p>
+            
+              <p class="d-flex justify-content-center text-center">{{ currentHouse.words }}</p>
+            
+          </ng-container>
+
+          <!-- Titles -->
+          <ng-container *ngIf='currentHouse.titles.length > 0'>
+            <ng-container *ngIf='currentHouse.titles[0] !== "" '>
+              <p class="d-flex justify-content-center mb-0">
+                <b>Titles:</b>
+              </p>
+                <ng-container *ngFor='let title of currentHouse.titles'>
+                  <p class="d-flex justify-content-center text-center"> {{ title }}</p>
+                </ng-container>
+            </ng-container>
+          </ng-container>
+          
+          <!-- Seats -->
+          <ng-container *ngIf='currentHouse.seats.length > 0'>
+            <ng-container *ngIf='currentHouse.seats[0] !== "" '>
+              <p class="d-flex justify-content-center mb-0">
+                <b>Seats:</b>
+              </p>
+                <ng-container *ngFor='let seat of currentHouse.seats'>
+                  <p class="d-flex justify-content-center text-center"> {{ seat }}</p>
+                </ng-container>
+            </ng-container>
+          </ng-container>
+
+          <!-- Current Lord -->
+          
+          <ng-container *ngIf='currentHouse.currentLord !== "" && currentHouse.currentLord !== null && currentHouse.currentLord !== undefined'>
+            
+              <div class="row">
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-6">
+                  <div class="container">
+                    <p class="d-flex justify-content-center p-2 heads text-white border border-dark"><b>Current Lord</b>:</p>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+              </div>
+              
+              <div class="row">
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-6">
+                  <div class="container">
+                    <p class="text-center word-break p-2 border border-dark">{{currentHouse.currentLord}}</p>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+              </div>
+          </ng-container>
+
+          <!-- Heir -->
+          
+          <ng-container *ngIf='currentHouse.heir !== "" && currentHouse.heir !== null && currentHouse.heir !== undefined'>
+            
+            <div class="row">
+              <div class="col-lg-3">
+            
+              </div>
+              <div class="col-lg-6">
+                <div class="container">
+                  <p class="d-flex justify-content-center p-2 heads text-white border border-dark">
+                    <b>Heir</b>:
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-3">
+                  
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-lg-3">
+            
+              </div>
+              
+              <div class="col-lg-6">
+                <div class="container">
+                  <p class="text-center word-break p-2 border border-dark">{{ currentHouse.heir }}</p>
+                </div>
+              </div>
+              
+              <div class="col-lg-3">
+              
+              </div>
+            </div>
+          </ng-container>
+
+          <!-- Over Lord -->
+          
+          <ng-container *ngIf='currentHouse.overlord !== "" && currentHouse.overlord !== null && currentHouse.overlord !== undefined'>
+            
+
+              <div class="row">
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-6">
+                  <div class="container">
+                    <p class="d-flex justify-content-center p-2 heads text-white border border-dark">
+                      <b>Over Lord</b>:</p>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-6">
+                  <div class="container">
+                    <p class="text-center word-break p-2 border border-dark">{{ currentHouse.overlord }}</p>
+                  </div>
+                </div>
+                <div class="col-lg-6">
+
+                </div>
+              </div>
+            
+          </ng-container>
+
+          <!-- Founded -->
+          
+          <ng-container *ngIf='currentHouse.founded !== "" && currentHouse.founded !== null && currentHouse.founded !== undefined'>
+            <p class="d-flex justify-content-center mb-0">
+              <b>Founded</b>:</p>
+            <div class="d-flex justify-content-center">
+              <p class="text-center">{{ currentHouse.founded }}</p>
+            </div>
+          </ng-container>
+
+          <!-- Founder -->
+          
+          <ng-container *ngIf='currentHouse.founder !== "" && currentHouse.founder !== null && currentHouse.founder !== undefined'>
+            <p class="d-flex justify-content-center mb-0">
+              <b>Founder</b>:</p>
+            <div class="container">
+              <p class="text-center word-break">{{ currentHouse.founder }}</p>
+            </div>
+          </ng-container>
+
+          <!-- Died Out -->
+          
+          <ng-container *ngIf='currentHouse.diedOut !== "" && currentHouse.diedOut !== null && currentHouse.diedOut !== undefined'>
+            <p class="d-flex justify-content-center mb-0">
+              <b>Died Out</b>:</p>
+            <div class="d-flex justify-content-center">
+              <p class="text-center">{{ currentHouse.diedOut }}</p>
+            </div>
+          </ng-container>
+
+
+          <!-- Ancestral Weapons -->
+          <ng-container *ngIf='currentHouse.ancestralWeapons.length > 0'>
+            <ng-container *ngIf='currentHouse.ancestralWeapons[0] !== "" '>
+              <p class="d-flex justify-content-center mb-0">
+                <b>Ancestral Weapons:</b>
+              </p>
+              <ng-container *ngFor='let ancestralWeapon of currentHouse.ancestralWeapons'>
+                <p class="word-break text-center"> {{ ancestralWeapon }}</p>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+
+          <!-- Cadet Branches -->
+          <ng-container *ngIf='currentHouse.cadetBranches.length > 0'>
+            <ng-container *ngIf='currentHouse.cadetBranches[0] !== "" '>
+              <p class="d-flex justify-content-center mb-0">
+                <b>Cadet Branches:</b>
+              </p>
+              <ng-container *ngFor='let cadetBranch of currentHouse.cadetBranches'>
+                <p class="word-break text-center"> {{ cadetBranch }}</p>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+
+          <!-- Sworn Members -->
+          <ng-container *ngIf='currentHouse.swornMembers.length > 0'>
+            <ng-container *ngIf='currentHouse.swornMembers[0] !== "" '>
+              <div class="row">
+                <div class="col-lg-3">
+
+                </div>
+                <div class="col-lg-6">
+                  <div class="container">
+                    <p class="d-flex justify-content-center p-2 heads text-white border border-dark">
+                      <b>Sworn Members:</b>
+                    </p>
+                  </div>
+                </div>
+                <div class="col-lg-3">
+
+                </div>
+              </div>
+              
+              <ng-container *ngFor='let swornMember of currentHouse.swornMembers'>
+                <div class="row">
+                  <div class="col-lg-3">
+
+                  </div>
+                  <div class="col-lg-6">
+                    <div class="container">
+                      <p class="text-center word-break p-2 border border-dark"> {{ swornMember }}</p>
+                    </div>
+                  </div>
+                  <div class="col-lg-3">
+
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+</ng-container>

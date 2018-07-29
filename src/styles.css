@@ -1,0 +1,20 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+	font-size:16px;
+}
+
+.body,html{
+	max-width: 100%;
+  overflow-x: hidden;
+}
+
+.my-container{
+	
+  background: url(../src/assets/images/back.jpg) center no-repeat;
+	background-size: cover;
+	background-repeat: no-repeat;
+  background-attachment: fixed;
+	/* background-color: #eeeeef; */
+	width: 100vw;
+  height: 100vh;
+}

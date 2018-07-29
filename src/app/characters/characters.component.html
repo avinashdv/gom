@@ -1,0 +1,176 @@
+<nav class="nav fixed-top heading">
+  <div class="container d-flex justify-content-center align-items-center">
+    
+    <a [routerLink]="['/main']">
+      <img src="assets/images/gottitle.jpg" class="image-title" alt="">
+    </a>
+  </div>
+</nav>
+
+<ng-container *ngIf="currentCharacter">
+  <div class="my-container">
+    <div class="d-flex justify-content-center">
+      <div class="body">
+
+        <!-- Start of one row -->
+        <div class="row">
+
+          <div class="col-12 col-md-8 bg-black pl-3 pr-4 text-white">
+            <div class="container">
+              <!-- Character Name -->
+              <ng-container *ngIf='currentCharacter.name === ""'>
+                  <h1 class="d-flex justify-content-md-start justify-content-center">Name: <b>N/A</b></h1>
+              </ng-container>
+            
+              <ng-container *ngIf='currentCharacter.name !== ""'>
+                <h1 class="d-flex justify-content-md-start justify-content-center">{{ currentCharacter.name }}</h1>
+              </ng-container>
+             
+              <!-- Gender -->
+              <ng-container *ngIf='currentCharacter.gender !== ""'>
+                <p class="d-flex justify-content-md-start justify-content-center"> <b> Gender</b> <span class="pl-2">: {{ currentCharacter.gender }} </span> </p>
+              </ng-container>
+              
+              <!-- Culture -->
+              <ng-container *ngIf='currentCharacter.culture !== ""'>
+                <p class="d-flex justify-content-md-start justify-content-center"> <b> Culture</b> <span class="pl-2">: {{ currentCharacter.culture }} </span></p>
+              </ng-container>
+
+              <!-- Born -->
+              <ng-container *ngIf='currentCharacter.born !== ""'>
+                <p class="d-flex justify-content-md-start justify-content-center"><b> Born</b> <span class="pl-2">: {{ currentCharacter.born }} </span></p>
+              </ng-container>
+
+              <!-- Died -->
+              <ng-container *ngIf='currentCharacter.died !== ""'>
+                <p class="d-flex justify-content-md-start justify-content-center"><b> Died</b> <span class="pl-2">: {{ currentCharacter.died }} </span></p>
+              </ng-container>
+     
+              
+              <!-- Titles -->
+              <ng-container *ngIf='currentCharacter.titles.length > 0'>
+                <ng-container *ngIf='currentCharacter.titles[0] !== "" '>
+                  <p> <b>Titles:</b> </p>
+                  <ng-container *ngFor='let title of currentCharacter.titles'>
+                    <p class="d-flex justify-content-md-start justify-content-center word-break"> {{ title }}</p>
+                  </ng-container>
+                </ng-container>
+              </ng-container>
+
+              <!-- Father -->
+              <ng-container *ngIf='currentCharacter.father !== ""'>
+                <p class="d-flex justify-content-md-start justify-content-center"><b> Father</b> <span class="pl-2">: {{ currentCharacter.father }} </span></p>
+              </ng-container>
+              
+              <!-- Mother -->
+              <ng-container *ngIf='currentCharacter.mother !== ""'>
+                <p class="d-flex justify-content-md-start justify-content-center"><b> Mother</b> <span class="pl-2">: {{ currentCharacter.mother }} </span></p>
+              </ng-container>
+              
+              <!-- Spouse-->
+              <ng-container *ngIf='currentCharacter.spouse !== ""'>
+                <p class="d-flex justify-content-md-start justify-content-center"><b> Spouse</b> <span class="pl-2">: {{ currentCharacter.spouse }} </span></p>
+              </ng-container>
+
+              <!-- Allegiances -->
+              <ng-container *ngIf="currentCharacter.allegiances.length > 0">
+                <div class="mb-3">
+                  <p class="mb-0 d-flex justify-content-md-start justify-content-center"> <b>Allegiances:</b> </p>
+                  <ng-container *ngFor="let allegiancy of currentCharacter.allegiances">
+                    <div class="d-flex justify-content-center justify-content-md-start">
+                      <p class="mb-0 pl-2  text-truncate">{{ allegiancy }}</p>
+                    </div>
+                  </ng-container>
+                </div>
+              </ng-container>
+
+              <!-- Aliases -->
+              <ng-container *ngIf='currentCharacter.aliases.length > 0'>
+                <ng-container *ngIf='currentCharacter.aliases[0] !== "" '>
+                  <div class="mb-3">
+                    <p class="mb-0 d-flex justify-content-md-start justify-content-center"> <b>Aliases:</b> </p>  
+                    <span class="pl-2 d-flex justify-content-md-start justify-content-center"  *ngFor='let alias of currentCharacter.aliases'> {{ alias }} </span>
+                  </div>
+                  </ng-container>
+              </ng-container>
+
+              <!-- TV Series -->
+              <ng-container *ngIf='currentCharacter.tvSeries.length > 0'>
+                <ng-container *ngIf='currentCharacter.tvSeries[0] !== "" '>
+                  <div class="mb-3">
+                    <p class="mb-0 d-flex justify-content-md-start justify-content-center"><b>TV Series:</b> </p>
+                    <span class="pl-2 d-flex justify-content-md-start justify-content-center" *ngFor='let name of currentCharacter.tvSeries'> {{ name }} </span>
+                  </div>
+                </ng-container>
+              </ng-container>
+
+              
+              <!-- Played By -->
+              <ng-container *ngIf='currentCharacter.playedBy.length > 0'>
+                <ng-container *ngIf='currentCharacter.playedBy[0] !== ""'>
+                  <div class="mb-3">
+                    <p class="mb-0 d-flex justify-content-md-start justify-content-center"><b>Played By:</b></p>
+                    <span class="pl-2 d-flex justify-content-md-start justify-content-center" *ngFor='let person of currentCharacter.playedBy; let first=first; let last=last'>
+                       {{ person }} {{last ? '':', '}}
+                    </span>
+                  </div>
+                </ng-container>
+              </ng-container>
+            
+              
+              <!-- Books -->
+              <ng-container *ngIf='currentCharacter.books.length > 0'>
+                <div class="mb-3">
+                  <p class="mb-0 d-flex justify-content-md-start justify-content-center"> <b>Books:</b></p>
+                
+                  <ng-container *ngFor='let book of currentCharacter.books'>
+                    <ng-container *ngIf='book !=="" '>
+                      <div class="d-flex justify-content-center justify-content-md-start">
+                        <p class="pl-2 mb-0 text-truncate"> {{ book }}</p>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                
+                </div>
+              </ng-container>
+              
+              <!-- Pov Books -->
+              <ng-container *ngIf='currentCharacter.povBooks.length > 0'>
+                <div class="mb-3">
+                  <p class="mb-0"> <b> Pov Books:</b></p>
+                  <ng-container *ngFor='let povBook of currentCharacter.povBooks'>
+                    <ng-container *ngIf='povBook !=="" '>
+                      <div class="d-flex justify-content-center justify-content-md-start">
+                        <p class="pl-2 mb-0 text-truncate"> {{ povBook }}</p>
+                      </div>
+                      </ng-container>
+                  </ng-container>
+                </div>
+              </ng-container>
+            </div>
+
+          </div>
+
+          <div class="col-md-4 b-0  m-0 d-none d-md-block">
+            <div class="container ">
+              <div class="bg-white d-flex justify-content-center align-items-center">
+
+                <!-- Male Image -->
+                <ng-container *ngIf='currentCharacter.gender === "Male"'>
+                  <img src="assets/images/spartan.jpg" class="small-image  py-3 px-2" alt="">
+                </ng-container>
+                
+                <!-- Female Image -->
+                <ng-container *ngIf='currentCharacter.gender === "Female"'>
+                  <img src="assets/images/queen.jpg" class="small-image  py-3 px-2" alt="">
+                </ng-container>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- End of one row -->
+      </div>
+    </div>
+  </div>
+</ng-container>

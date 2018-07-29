@@ -1,0 +1,152 @@
+<nav class="nav fixed-top heading">
+  <div class="container d-flex justify-content-center">
+    <a [routerLink]="['/main']">
+      <img src="assets/images/gottitle.jpg" class="image-title" alt="">
+    </a>
+  </div>
+</nav>
+
+<ng-container *ngIf="currentBook">
+  <div class="my-container">
+    <div class="d-flex justify-content-center ">
+      <div class="body">
+          <!-- Start of one row -->
+          <div class="row">
+            
+            <div class="col-sm-3 b-0 m-0 d-none d-sm-block">
+              <div class="row bg-white d-block d-lg-none">
+                <div class="col-12 p-2 d-flex justify-content-center">
+                  <img src="assets/images/gotbook.png" class="small-image d-block d-lg-none d-flex justify-content-center" alt="">
+                </div>
+              </div>
+            </div>
+
+            <div class="col-12 col-sm-9 pl-3 pr-4 text-white">
+              <!-- Book Name -->
+              <ng-container *ngIf='currentBook.name !== "" && currentBook.name !== null && currentBook.name !== undefined'>
+                <h1 class="d-flex justify-content-sm-start justify-content-center">{{currentBook.name}}</h1>
+              </ng-container>
+              
+              <ng-container *ngIf='currentBook.name === "" || currentBook.name === null || currentBook.name === undefined'>
+                <h1 class="d-flex justify-content-sm-start justify-content-center">Name:N/A</h1>
+              </ng-container>
+
+
+              
+              <!-- Author Name -->
+              <ng-container *ngIf="currentBook.authors.length > 0">
+                <ng-container *ngFor="let author of currentBook.authors">
+                  <p class="pt-3 d-flex justify-content-sm-start justify-content-center">Author : {{ author }}</p>
+                </ng-container>
+              </ng-container>
+              
+              <div class="row">
+                <div class="col-12 col-sm-8 d-flex justify-content-sm-start justify-content-center">
+                  <ng-container *ngIf="currentBook.isbn">
+                    <p>ISBN: {{ currentBook.isbn }}
+                    </p>
+                  </ng-container>
+                </div>
+                <div class="col-12 col-sm-4 d-flex justify-content-sm-end justify-content-center">
+                  <ng-container *ngIf="currentBook.numberOfPages">
+                    <p> Pages:
+                      <b>{{ currentBook.numberOfPages }}</b>
+                    </p>
+                  </ng-container>
+                </div>
+              </div>
+            
+              <div class="row">
+                <div class="col-12 col-sm-6 d-flex justify-content-sm-start justify-content-center">
+                  <!-- Country -->
+                  <ng-container *ngIf="currentBook.country">
+                      <p><i class="fa fa-map-marker" aria-hidden="true"></i>    {{ currentBook.country }}</p>
+                  </ng-container>
+                </div>
+                <div class="col-12 col-sm-6 d-flex justify-content-sm-end justify-content-center">
+                  <ng-container *ngIf="currentBook.mediaType">
+                    <p>
+                      <i class="fa fa-file"></i> {{ currentBook.mediaType }}</p>
+                  </ng-container>
+                </div>
+              </div>
+
+              <div class="row">
+                <!-- Released Date -->
+                <div class="col-12 col-sm-5 d-flex justify-content-sm-start justify-content-center">
+                  <ng-container *ngIf="currentBook.released">
+                    <p>
+                      <i class="fa fa-calendar"></i> <b> {{ currentBook.released | date }}</b>  
+                        
+                    </p>
+                  </ng-container>
+                </div>
+                <!-- Publisher -->
+                <div class="col-12 col-sm-7 d-flex justify-content-sm-end justify-content-center">
+                  <ng-container *ngIf="currentBook.publisher">
+                    <p class="justify-content-end"> Publisher :
+                      <b>{{ currentBook.publisher }}</b>
+                    </p>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- End of one row -->
+
+          <div class="row">
+            <div class="col-lg-3 img d-none d-lg-block">
+                <img src="assets/images/bookone.jpg" class="big-image" alt="">
+            </div>
+            <div class="col-lg-9">
+              <div class="row">
+                <div class="pl-0 pr-3 py-3 p-lg-3  d-none d-sm-block col-6">
+                  <ng-container *ngIf="currentBook.characters.length > 0">
+                  <h5 class="py-1 secondary-content d-flex justify-content-center"> <b>CHARACTERS</b></h5>
+                  </ng-container>
+                </div>
+                <div class="pl-3 pr-0 py-3 p-lg-3 d-none d-sm-block col-6 text-black">
+                  <ng-container *ngIf="currentBook.povCharacters.length > 0">
+                    <h5 class="py-1 secondary-content d-flex justify-content-center"> <b>POV - CHARACTERS</b></h5>
+                  </ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12  col-lg-3">
+            </div>
+            <div class="col-12 col-lg-9">
+              <div class="row">
+                <div class="col-12 col-sm-6 px-0 pl-sm-0 pr-sm-3 pl-lg-3 pt-3">
+                  <h5 class="text-black text-center bg-white mb-3 p-2 d-block d-sm-none"><b>CHARACTERS</b></h5>
+                  <div id="char" >
+                    <ng-container *ngIf="currentBook.characters.length > 0">
+                      <ng-container *ngFor="let character of currentBook.characters">
+                        <div class="text-white text-center">
+                          <p class="p-4 border border-white text-truncate">{{character}}</p>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="col-12 col-sm-6 px-0 pr-sm-0 pl-sm-3 pr-lg-3 pt-3">
+                  <h5 class="text-black text-center bg-white mb-3 p-2 d-block d-sm-none"> <b>POV - CHARACTERS</b> </h5>
+                  <div id="pov-char">
+                    <ng-container *ngIf="currentBook.povCharacters.length > 0">
+                      <ng-container *ngFor="let povCharacter of currentBook.povCharacters">
+                        <div class="text-white text-center">
+                         <p class="p-4 border border-white text-truncate">{{povCharacter}}</p>
+                        </div>
+                      </ng-container>
+                    </ng-container>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
